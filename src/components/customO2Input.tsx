@@ -1,7 +1,18 @@
-import React from 'react'
+import type React from 'react'
 
-export const customO2Input  = () => {
-  return (
-	<div></div>
-  )
+interface CustomO2InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	name?: string
+	label?: string
+	description?: string
+	className?: string
+	inputClassName?: string
 }
+
+const CustomO2Input: React.FC<CustomO2InputProps> = ({ ...props }) => {
+
+	return (
+		<input />
+	)
+}
+
+export default CustomO2Input

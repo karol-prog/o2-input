@@ -1,11 +1,12 @@
-import './App.css'
-import { Button } from "./components/ui/button"
+import type React from 'react'
+import CustomO2Input from './components/customO2Input'
 
-const App = () => {
-	return <>
-		<p className='text-red-600'>adsdsadas</p>
-		<Button>dsadsa</Button>
-	</>
+const App: React.FC = () => {
+	return (
+		<div className='flex items-center justify-center p-4'>
+			<CustomO2Input label='Username' placeholder='Enter your username' />
+		</div>
+	)
 }
 
 export default App
