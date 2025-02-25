@@ -2,45 +2,46 @@
 
 import type React from 'react'
 import { useState } from 'react'
-import UniversalInput from '../components/UniversalInput'
+import CustomO2Input from './components/customO2Input'
 
-const HomePage: React.FC = () => {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+const ExampleForm: React.FC = () => {
+	const [username, setUsername] = useState('')
 
-	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setEmail(e.target.value)
+	const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setUsername(e.target.value)
 	}
 
-	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setPassword(e.target.value)
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault()
+		console.log('Submitted username:', username)
+		// Add your form submission logic here
 	}
-
-	const emailValidationRules = [
-		{
-			test: (value: string) => value.includes('@'),
-			message: 'Please enter a valid email address'
-		}
-	]
-
-	const passwordValidationRules = [
-		{
-			test: (value: string) => value.length >= 8,
-			message: 'Password must be at least 8 characters long'
-		},
-		{
-			test: (value: string) => /[A-Z]/.test(value),
-			message: 'Password must contain at least one uppercase letter'
-		}
-	]
 
 	return (
-		<div className='container mx-auto p-4 max-w-md'>
-			<h1 className='text-2xl font-bold mb-4'>Universal Input Example</h1>
-			<form className='space-y-4'>
-				<UniversalInput type='email' name='email' label='Email' value={email} onChange={handleEmailChange} placeholder='Enter your email' className='w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500' validationRules={emailValidationRules} />
-				<UniversalInput type='password' name='password' label='Password' value={password} onChange={handlePasswordChange} placeholder='Enter your password' className='w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500' validationRules={passwordValidationRules} />
-				<button type='submit' className='w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
+		<div>
+			<p className="text-(var(--danger-content))">skuska tailwindu</p>
+			<form onSubmit={handleSubmit}>
+				<CustomO2Input
+					type='text'
+					name='username'
+					label='Username'
+					value={username}
+					onChange={handleUsernameChange}
+					placeholder='Enter your username'
+					surfaceColor='bg-x-low-surface'
+					labelStyle='label-m'
+					radiusSize='radius-s'
+					hoverState='hover:bg-hover-state'
+					focusState='focus:border-brand-surface focus:shadow-focus-state'
+					validationRules={[
+						{
+							test: (value) => value.length >= 3,
+							message: 'Username must be at least 3 characters long'
+						}
+					]}
+				/>
+
+				<button type='submit' className='mt-4 w-full py-2 px-4 bg-brand-surface text-x-low-surface radius-s hover:opacity-90 transition-opacity duration-300'>
 					Submit
 				</button>
 			</form>
@@ -48,4 +49,4 @@ const HomePage: React.FC = () => {
 	)
 }
 
-export default HomePage
+export default ExampleForm

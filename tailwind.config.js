@@ -1,58 +1,34 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-    darkMode: ["class"],
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-  	extend: {
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		},
-  		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			}
-  		}
-  	}
-  },
-  plugins: [require("tailwindcss-animate")],
-}
-
+module.exports = {
+	content: ["./src/**/*.{js,jsx,ts,tsx}"], // Adjust paths based on your project
+	theme: {
+		extend: {
+			colors: {
+				"x-high-surface": "var(--x-high-surface)",
+				"x-low-surface": "var(--x-low-surface)",
+				"brand-surface": "var(--brand-surface)",
+				"danger-surface": "var(--danger-surface)",
+				"danger-variant-surface": "var(--danger-variant-surface)",
+				"warning-surface": "var(--warning-surface)",
+				"warning-variant-surface": "var(--warning-variant-surface)",
+				"xx-high-content": "var(--xx-high-content)",
+				"medium-content": "var(--medium-content)",
+				"low-content": "var(--low-content)",
+				"danger-content": "var(--danger-content)",
+				"warning-content": "var(--warning-content)",
+			},
+			borderRadius: {
+				xs: "8px",
+				s: "12px",
+				m: "16px",
+				l: "20px",
+			},
+			fontSize: {
+				"label-m": ["16px", { lineHeight: "22px", letterSpacing: "0.16px", fontWeight: "500" }],
+				"label-s": ["14px", { lineHeight: "17px", letterSpacing: "0.16px", fontWeight: "550" }],
+				"body-m": ["16px", { lineHeight: "22px", letterSpacing: "0.01px", fontWeight: "400" }],
+			},
+		},
+	},
+	plugins: [],
+};

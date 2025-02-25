@@ -1,69 +1,72 @@
-
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+	/* surface colors */
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+	--x-high-surface: #8C8C9A;
+	--x-low-surface:#FFFFFF;
+	--brand-surface: #0050FF;
+	--danger-surface: #DC2828;
+	--danger-variant-surface: #FFDCDC;
+	--warning-surface: #A56315;
+	--warning-variant-surface: #FAF1B6;
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+	/* content colors */
+	--xx-high-content: #2C2C31;
+	--medium-content: #8C8C9A;
+	--low-content: #C9C9CE;
+	--danger-content: #DC2828;
+	--warning-content: #A56315;
+
+	/* state colors */
+	--hover-state: #1A1A1A0F, 6%;
+	--focus-state: #1A1A1ACC, 80%;
+
+
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.label-m {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 22px;
+	letter-spacing: 0.16px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.label-s {
+	font-size: 14px;
+	font-weight: 550;
+	line-height: 17px;
+	letter-spacing: 0.16px;
+}
+
+.body-m {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 22px;
+	letter-spacing: 0.01px;
+}
+
+
+/* Radiuses */
+.radius-xs {
+	border-radius: 8px;
+}
+
+.radius-s {
+	border-radius: 12px;
+}
+
+.radius-m {
+	border-radius: 16px;
+}
+
+.radius-l {
+	border-radius: 20px;
 }
