@@ -19,7 +19,6 @@ const ExampleForm: React.FC = () => {
 
 	return (
 		<div>
-			<p className="text-(var(--danger-content))">skuska tailwindu</p>
 			<form onSubmit={handleSubmit}>
 				<CustomO2Input
 					type='text'

@@ -41,7 +41,7 @@ const CustomO2Input: React.FC<UniversalInputProps> = ({ type, name, label, value
 
 	return (
 		<div className='flex flex-col gap-2 text-red-50'>
-			<label htmlFor={name} className={`universal-input-label ${labelStyle} text-xx-high-content`}>
+			<label htmlFor={name} className={`${labelStyle}`}>
 				{label}
 			</label>
 			<input
