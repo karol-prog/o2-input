@@ -2,7 +2,7 @@
 
 import type React from 'react'
 import { useState } from 'react'
-import CustomO2Input from './components/customO2Input'
+import CustomO2Input from './components/CustomO2Input'
 
 const ExampleForm: React.FC = () => {
 	const [username, setUsername] = useState('')
@@ -14,12 +14,11 @@ const ExampleForm: React.FC = () => {
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 		console.log('Submitted username:', username)
-		// Add your form submission logic here
 	}
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
+		<div className='p-6 max-w-md mx-auto'>
+			<form onSubmit={handleSubmit} className='space-y-4'>
 				<CustomO2Input
 					type='text'
 					name='username'
@@ -27,11 +26,11 @@ const ExampleForm: React.FC = () => {
 					value={username}
 					onChange={handleUsernameChange}
 					placeholder='Enter your username'
-					surfaceColor='bg-x-low-surface'
-					labelStyle='label-m'
-					radiusSize='radius-s'
-					hoverState='hover:bg-hover-state'
-					focusState='focus:border-brand-surface focus:shadow-focus-state'
+					labelStyle='label-s text-xx-high-content'
+					radiusSize='radius-xs'
+					borderColor='var(--brand-surface)'
+					surfaceColor='var(--low-content)'
+					focusColor='var(--focus-state)'
 					validationRules={[
 						{
 							test: (value) => value.length >= 3,

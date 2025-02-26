@@ -1,50 +1,79 @@
-# React + TypeScript + Vite
+# CustomO2Input Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CustomO2Input is a flexible and customizable input component for React applications. It provides various styling options and built-in validation functionality.
 
-Currently, two official plugins are available:
+## Props
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The CustomO2Input component accepts the following props:
 
-## Expanding the ESLint configuration
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| type | string | - | The type of the input (e.g., 'text', 'number', 'email') |
+| name | string | - | The name attribute for the input |
+| label | string | - | The label text for the input |
+| value | string | - | The current value of the input |
+| onChange | function | - | Function to handle input changes |
+| placeholder | string | - | Placeholder text for the input |
+| className | string | - | Additional CSS classes for the input |
+| validationRules | array | \[\] | Array of validation rules (each rule should have a `test` function and a `message` string) |
+| surfaceColor | string | - | Background color of the input |
+| labelStyle | string | - | CSS classes for styling the label |
+| radiusSize | string | - | CSS classes for border radius |
+| focusColor | string | 'initial' | Color of the input border and shadow when focused |
+| borderColor | string | 'initial' | Color of the input border when not focused |
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Usage
 
-- Configure the top-level `parserOptions` property like this:
+Here's a basic example of how to use the CustomO2Input component:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+```jsx
+import React, { useState } from 'react';
+import CustomO2Input from './CustomO2Input';
+
+const MyForm = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const validationRules = [
+    {
+      test: (value) => value.length >= 3,
+      message: 'Input must be at least 3 characters long',
     },
-  },
-})
+  ];
+
+  return (
+   <CustomO2Input
+		type='text'
+		name='username'
+		label='Username'
+		value={username}
+		onChange={handleUsernameChange}
+		placeholder='Enter your username'
+		labelStyle='label-s text-xx-high-content'
+		radiusSize='radius-xs'
+		borderColor='var(--brand-surface)'
+		surfaceColor='var(--low-content)'
+		focusColor='var(--focus-state)'
+		validationRules={[
+			{
+				test: (value) => value.length >= 3,
+				message: 'Username must be at least 3 characters long'
+			}
+		]}
+	/>
+  );
+};
+
+export default MyForm;
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Features
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Customizable styling through props
+- Built-in validation with custom rules
+- Error message display
+- Focus and blur effects
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```

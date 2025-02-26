@@ -1,28 +1,24 @@
 import type React from 'react'
 import { useState, useEffect } from 'react'
 
-type ValidationRule = {
-	test: (value: string) => boolean
-	message: string
-}
+import { customO2InputTypes } from '../types/customO2Input.types'
 
-type UniversalInputProps = {
-	type: string
-	name: string
-	label: string
-	value: string
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-	placeholder?: string
-	className?: string
-	validationRules?: ValidationRule[]
-	surfaceColor?: string
-	labelStyle?: string
-	radiusSize?: string
-	hoverState?: string
-	focusState?: string
-}
-
-const CustomO2Input: React.FC<UniversalInputProps> = ({ type, name, label, value, onChange, placeholder, className, validationRules = [], surfaceColor, labelStyle, radiusSize, hoverState, focusState }) => {
+const CustomO2Input: React.FC<customO2InputTypes> = (
+	{
+		type,
+		name,
+		label,
+		value,
+		onChange,
+		placeholder,
+		className,
+		validationRules = [],
+		surfaceColor,
+		labelStyle,
+		radiusSize,
+		focusColor = 'initial',
+		borderColor = 'initial'
+	}) => {
 	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
@@ -40,10 +36,11 @@ const CustomO2Input: React.FC<UniversalInputProps> = ({ type, name, label, value
 	}
 
 	return (
-		<div className='flex flex-col gap-2 text-red-50'>
-			<label htmlFor={name} className={`${labelStyle}`}>
+		<div className='flex flex-col gap-2'>
+			<label htmlFor={name} className={error ? 'text-danger-content' : labelStyle}>
 				{label}
 			</label>
+
 			<input
 				type={type}
 				id={name}
@@ -51,24 +48,20 @@ const CustomO2Input: React.FC<UniversalInputProps> = ({ type, name, label, value
 				value={value}
 				onChange={onChange}
 				placeholder={placeholder}
-				className={`
-					universal-input
-					${surfaceColor}
-					${radiusSize}
-					${hoverState}
-					${focusState}
-					${className}
-					${error ? 'border-danger-surface bg-danger-variant-surface' : 'border-x-high-surface'}
-					text-xx-high-content
-					transition-colors
-					duration-300
-					py-2
-					px-3
-					w-full
-					outline-none`
-				}
-				aria-invalid={error ? 'true' : 'false'}
-				aria-describedby={error ? `${name}-error` : undefined}
+				className={`py-2 px-3 w-full outline-none transition-all duration-200 ${className} ${radiusSize}`}
+				style={{
+					backgroundColor: surfaceColor,
+					border: `1px solid ${error ? 'var(--danger-content)' : borderColor}`,
+					color: 'var(--high-content)',
+				}}
+				onFocus={(e) => {
+					e.target.style.borderColor = focusColor;
+					e.target.style.boxShadow = `0 0 0 2px ${focusColor}`;
+				}}
+				onBlur={(e) => {
+					e.target.style.borderColor = error ? 'var(--danger-content)' : borderColor;
+					e.target.style.boxShadow = 'none';
+				}}
 			/>
 			{error && (
 				<span id={`${name}-error`} className='body-m text-danger-content mt-1'>
