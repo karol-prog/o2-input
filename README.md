@@ -45,7 +45,7 @@ const MyForm = () => {
   ];
 
   return (
-   <CustomO2Input
+	<CustomO2Input
 		type='text'
 		name='username'
 		label='Username'
